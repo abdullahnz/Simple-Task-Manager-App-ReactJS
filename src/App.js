@@ -1,5 +1,3 @@
-import "./App.css"
-
 import { Container, Row, Col } from "react-bootstrap"
 import TaskList from "./components/TaskList/TaskList"
 import Tasks from "./components/TaskForm/Tasks"
