@@ -25,19 +25,6 @@ const CardActions = (props) => {
     })
   }, [])
 
-  const statusChangeHandler = (event) => {
-    const selectedTaskId = parseInt(event.target.getAttribute("task"))
-    const selectedStatus = parseInt(event.target.getAttribute("status"))
-    
-    props.updateTask(selectedTaskId, selectedStatus)
-  }
-
-  const deleteHandler = (event) => {
-    const selectedTaskId = parseInt(event.target.getAttribute("task"))
-
-    props.deleteTask(selectedTaskId)
-  }
-
   return (
     <div className="d-flex gap-2 mb-2">
       <Dropdown>
@@ -49,9 +36,7 @@ const CardActions = (props) => {
             return (
               <Dropdown.Item
                 key={i}
-                task={props.id}
-                status={obj.status}
-                onClick={statusChangeHandler}
+                onClick={() => props.updateTask(props.id, obj.status)}
               >
                 {obj.action}
               </Dropdown.Item>
@@ -60,11 +45,12 @@ const CardActions = (props) => {
         </Dropdown.Menu>
       </Dropdown>
       <Button 
-        className="btn btn-danger btn-sm" 
-        task={props.id} 
-        onClick={deleteHandler}
+        className="btn btn-danger btn-sm"
+        onClick={() => props.deleteTask(props.id)} 
       >
-        <TrashFill />
+        <div>
+          <TrashFill />
+        </div>
       </Button>
     </div>
   );
