@@ -6,7 +6,7 @@ import { useState, useEffect } from "react"
 import { EXAMPLE_TASK } from "./store/Data"
 
 const App = () => {
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.tasks) || [])
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.tasks || '[]'))
 
   useEffect(() => {
     localStorage.tasks = JSON.stringify(tasks)
